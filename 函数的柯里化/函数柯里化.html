@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo1"></div>
+    <div class="demo2"></div>
+
+
+
+
+
+
+
+
+    <script>
+   
+    function cost()
+    {
+
+            var sum=0;
+            for(var i=0;i<arguments.length;i++){
+                sum +=arguments[i]
+            }
+            return sum;
+    }
+    var sum=cost(500,200);
+    console.log(sum)
+    console.log(this);
+    console.log("-----------------------------")
+    
+
+function a(){
+    
+}
+
+
+    var curring=function(fn){
+        var arg=[];
+        return function(){
+           
+            if(arguments.length===0){
+                return fn.apply(this,arg);  
+            }else{
+                    console.log(arguments);
+                    [].push.apply(arg,arguments);
+                    // console.log("a")
+                    console.log(arg);
+            }   
+        }
+    }
+
+// a=curring(cost)
+// a(100);
+// a(200);
+// console.log(a())
+
+cost=curring(cost)
+cost(100);
+cost(200);
+console.log(cost())
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+ 

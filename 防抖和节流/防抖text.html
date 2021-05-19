@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="submit" id="input">
+    <script>
+
+ 
+    var btn=document.getElementById('input')
+    
+        function debounce(func,wait){
+            let timeout=null;
+            
+            return function(){
+                // let first=!timeout 
+                let context=this;
+                if(timeout){
+                    clearTimeout(timeout);
+                }
+                // if(first){
+                //     func.apply(context)
+                // }
+                timeout=setTimeout(() => {
+                //    timeout=null;
+                func.apply(context)//改变指针的方向，因为reture中的指针是指向按钮对象的，而func（传入的函数）指向的是windows,所以如果需要操作按钮就要改变指针
+                }, wait);
+            }
+        }//当我第一次点击按钮,null为fales，会执行定时器里面的内容（一秒后打印1），但是当我连续点击时，第一次的定时器还未执行完毕，
+        //所以就会执行if中的清除定时器的代码（清除了上一次点击的未执行完的定时器），一直循环，直到我停止点击了又生成了一个定时器并且一秒后打印了一个1。
+
+    // btn.onclick=a;//a是函数，而a()是调用a函数会输出结果1
+    btn.onclick=debounce(a,1000);
+
+    function a(){
+        console.log(1);
+        console.log(this);//如果不改变指针，这里的this指向windows,而有时候我们需要执行执行的对象btn
+    } -->
+
+
+
+
+    <!-- 如果想第一次点击没有延迟 -->
+
+    <input type="submit" id="input">
+    <script>
+
+ 
+    var btn=document.getElementById('input')
+    
+        function debounce(func,wait){
+            let timeout;
+            console.log(this);
+            console.log("a")
+            
+            return function(){
+                let first=!timeout;
+                let context=this;
+                
+                if(timeout){
+                    clearTimeout(timeout);
+                   
+                }
+                if(first){
+                    
+                    func.apply(context)
+                    console.log(this);
+                }
+                timeout=setTimeout(() => {
+                   timeout=null;//必须等我的timeout定时器结束后才能将timeout置为空，不然一直点会一直刷新定时器。
+                }, wait);
+            }
+            
+
+        }
+    btn.onclick=debounce(a,1000);
+
+    function a(){
+        console.log(1);
+        console.log(this);
+    }
+
+
+</script>
+
+
+
+<!-- <style>
+    #box {
+      width: 1000px;
+      height: 500px;
+      background: #ccc;
+      font-size: 40px;
+      text-align: center;
+      line-height: 500px;
+    }
+</style>
+
+<div id="box"></div>
+
+<script>
+  const box = document.getElementById('box')
+//   box.onmousemove = function (e) {
+//     box.innerHTML = `${e.clientX}, ${e.clientY}`
+//   }
+box.onmousemove=yc(hd,2000);
+
+  function yc(func,wait){
+      let timer;
+      return function(){
+    
+            if(timer){
+                clearTimeout(timer)
+            }
+           timer=setTimeout(() => {
+            func.apply(this,arguments);
+            }, wait);
+        }
+  }
+  function hd(e){
+    box.innerHTML = `${e.clientX}, ${e.clientY}`;
+    console.log(this);
+  }
+</script> -->
+</body>
+</html>

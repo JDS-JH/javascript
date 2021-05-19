@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="submit" id="input">
+
+    <script>
+
+ 
+    var btn=document.getElementById('input')
+    
+        function debounce(func,delay){
+                var begin=0;  
+                return function(){
+                    var cur=new Date().getTime();
+                    console.log(cur-begin)
+                    console.log("--------------------")
+                    console.log("这是begin"+begin)
+                    if(cur-begin>delay){
+                        func.apply(this)
+                        begin=cur;
+                    }
+                }
+            
+
+        }
+    btn.onclick=debounce(a,2000);
+
+    function a(){
+        console.log(1);
+        console.log(this);
+    }
+
+
+</script>
+
+</body>
+</html>

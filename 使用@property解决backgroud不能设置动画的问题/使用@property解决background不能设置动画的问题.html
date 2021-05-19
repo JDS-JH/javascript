@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+    <div class="container">
+        <input checked type="radio" name="1" id="options1"><label for="options1">25%</label>
+        <input type="radio" name="1" id="options2"><label for="options2">50%</label>
+        <input type="radio" name="1" id="options3"><label for="options3">75%</label>
+        <input type="radio" name="1" id="options4"><label class="a" for="options4">100%</label>
+        <div class="yuan"></div>
+    </div>
+    </div>
+   
+
+</body>
+<style>
+    @property --main-cg{
+        syntax:'<color>';
+        inherits:false;
+        initial-value:#FF0000;
+    }
+    @property --percentage{
+        syntax:'<percentage>';
+        inherits:false;
+        initial-value:25%;
+    }
+
+    .yuan{
+        margin: 40px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: red;
+        transition: 0.5s;
+        /* background:conic-gradient(
+        red 0,red 25%,yellow 25%, yellow 50%,blue 50%,blue 100%
+    ); */
+        background: conic-gradient(
+         var(--main-cg) var(--percentage),
+         transparent var(--percentage),
+         transparent 100%
+    );
+        transition: 1s --main-cg ,1s --percentage;
+    }
+    /* :root{
+        --main-cg:red;
+        --percentage:25%;
+    
+    } */
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container input{
+        display: none;
+    }
+    .container label{
+        color: black;
+        cursor: pointer;
+ 
+    }
+    .container label::before{
+        content: "";
+        width: 40px;
+        height: 20px;
+        background-color:var(--main-cg);
+        display: inline-block;
+    }
+    .container label[for="options1"]::before{
+        --main-cg:red;
+    }
+    .container label[for="options2"]::before{
+        --main-cg:yellow;
+    }
+    .container label[for="options3"]::before{
+        --main-cg:blue;
+    }
+    .container label[for="options4"]::before{
+        --main-cg:orange
+    }
+    .container input:checked +label{
+        color: var(--main-cg);
+        font-weight: bolder;
+    }
+    .container #options1:checked +label{
+    --main-cg: red;
+}
+.container #options2:checked +label{
+    --main-cg: yellow;
+}
+.container #options3:checked +label{
+    --main-cg: blue;
+}
+.container #options4:checked +label{
+    --main-cg: orange;
+}
+
+.container #options1:checked ~.yuan{
+    --main-cg:red;
+    --percentage:25%;
+}
+.container #options2:checked ~.yuan{
+    --main-cg:yellow;
+    --percentage:50%;
+}
+.container #options3:checked ~.yuan{
+    --main-cg:blue;
+    --percentage:75%;
+}
+.container #options4:checked ~.yuan{
+    --main-cg:orange;
+    --percentage:100%;
+}
+
+</style>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #box{
+        border: 2px red solid;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 200px 200px;
+        grid-column-gap: 100px;
+    }
+    #box img{
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <div style="display: none;" id="data">
+        [
+        {"img":"../图片素材/1.jpg","name":"图片1"},
+        {"img":"../图片素材/2.jpg","name":"图片2"},
+        {"img":"../图片素材/3.jpg","name":"图片3"},
+        {"img":"../图片素材/4.jpg","name":"图片4"},
+        {"img":"../图片素材/5.jpg","name":"图片5"},
+        {"img":"../图片素材/6.jpg","name":"图片6"},
+        {"img":"../图片素材/7.jpg","name":"图片7"},
+        {"img":"../图片素材/8.jpg","name":"图片8"},
+        {"img":"../图片素材/9.jpg","name":"图片9"},
+        {"img":"../图片素材/10.jpg","name":"图片10"},
+        {"img":"../图片素材/11.jpg","name":"图片11"},
+        {"img":"../图片素材/12.jpg","name":"图片12"},
+        {"img":"../图片素材/13.jpg","name":"图片13"},
+        {"img":"../图片素材/14.jpg","name":"图片14"},
+        {"img":"../图片素材/15.jpg","name":"图片15"},
+        {"img":"../图片素材/16.jpg","name":"图片16"}
+        ]
+    </div>
+    <div id="box" >
+        
+            <!-- <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg">
+            <img src="../图片素材/b.jpg"> -->
+        
+    </div>
+
+    <script type="text/html" id="one-img">
+        <div id="con">
+        <img src="../图片素材/b.jpg" class="con-img" id="con2" data-src="{{img}}" alt="{{name}}">
+        <div class="con-name">
+            <h3>{{name}}</h3>
+        </div>
+        </div>
+    </script>
+
+
+</body>
+<script src="懒加载.js"></script>
+
+</html>
